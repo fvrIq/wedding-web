@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream-50:  #FFFFF8;
+  --color-cream-100: #FAF7F2;
+  --color-cream-200: #F0E9DC;
+  --color-cream-300: #E8DFD0;
+
+  --color-gold-100: #F5E6C4;
+  --color-gold-200: #E8D5A3;
+  --color-gold-300: #D4B96A;
+  --color-gold-400: #C9A84C;
+  --color-gold-500: #B8960C;
+  --color-gold-600: #9B7E2E;
+  --color-gold-700: #7A6020;
+
+  --color-warm-300: #C4B39E;
+  --color-warm-400: #A89880;
+  --color-warm-500: #8A7260;
+  --color-warm-600: #7A6552;
+  --color-warm-700: #5C4033;
+  --color-warm-800: #3C2A1E;
+  --color-warm-900: #2C1810;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-script: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Lato", Inter, ui-sans-serif, system-ui;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream-100 text-warm-800;
+    font-family: var(--font-sans);
+    font-weight: 300;
+  }
+
+  ::selection {
+    @apply bg-gold-200 text-warm-800;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-cream-200;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gold-400 rounded-full;
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    @apply py-20 px-5 md:px-10;
+  }
+
+  .gold-divider {
+    @apply w-16 h-px bg-gold-400 mx-auto my-6;
+  }
+
+  .ornament {
+  font-family: var(--font-script);
+  @apply italic text-gold-200 tracking-[0.15em] text-base;
+  text-shadow: 0 2px 6px rgba(81, 51, 51, 0.265);
+}
+
+  .reveal {
+    @apply opacity-0 translate-y-6 transition-all duration-700 ease-out;
+  }
+  .reveal.visible {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scalein {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-fadein {
+  animation: fadein 0.25s ease-out;
+}
+
+.animate-scalein {
+  animation: scalein 0.3s ease-out;
+}
+
+.text-gold-shine {
+  background: linear-gradient(
+    90deg,
+    #b8860b 0%,
+    #f5d576 25%,
+    #fff3c4 50%,
+    #f5d576 75%,
+    #b8860b 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-gold-shine {
+  background: linear-gradient(90deg, #b8860b, #f5d576, #fff3c4, #f5d576, #b8860b);
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s linear infinite;
+}
+
+@keyframes expand {
+  from { width: 0; opacity: 0; }
+  to { width: 3rem; opacity: 1; }
+}
+
+.animate-expand {
+  animation: expand 0.8s ease-out forwards;
+}
+
+.text-gold {
+  color: #D4AF37;
+}
+
+.bg-gold {
+  background-color: #D4AF37;
+}
